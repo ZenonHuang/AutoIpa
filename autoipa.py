@@ -11,40 +11,40 @@ import smtplib
 
 # 项目根目录
 #/Users/xx/project"
-project_path = "/Users/quseit02/zz/Qlive/QLiveStream/" 
+project_path = "" 
+#profile文件名  xcode获取
+app_profile=""
+#对应的证书 生产/开发（keychain获取）
+app_codesignIdentity=""
 #app的target,一般来说，target和scheme相同
-app_target="QLiveStream"
+app_target=""
 #app的scheme
-app_scheme="QLiveStream"
+app_scheme=""
 # 指定项目下编译目录
 build_path = "build"
 #app_name...xxx.app，有时候appname会更改，和Target不同，会导致无法导出
-app_name="GoSpark.app"
+app_name="xxx.app"
 # 编译成功后.app所在目录 
 app_path = '%s/%s/Build/Products/Release-iphoneos/%s'%(project_path,build_path,app_name)
-#profile文件名  xcode获取
-app_profile="92f96181-3224-4700-86e4-7c3fa3765ab5"
-#configuration debug/release/AdHoc
-#对应的证书 生产/开发（keychain获取）
-app_codesignIdentity="iPhone Distribution: Jennifer liu (64D265SZ8K)"
 
+#configuration debug/release/AdHoc
 #Debug=True
 Debug=False
 
 # 打包后ipa存储目录
-targerIPA_parth = "/Users/quseit02/Desktop"
+targerIPA_parth = ""
 
 # fir.im的api token
-fir_api_token = "43e0bb9e46e84b5c23792c7497a4f461"
+fir_api_token = ""
 
 # 第三方 SMTP 服务
-mail_host="smtp.exmail.qq.com"  #设置服务器
-mail_user="zzgo@quseit.com"    #用户名
-mail_pass="Quseit520"   #口令
+mail_host=""  #设置服务器
+mail_user=""    #用户名
+mail_pass=""   #口令
 
-sender = 'zzgo@quseit.com'
+sender = ''
 # 接收邮件组，可设置为你的QQ邮箱或者多个其他邮箱
-receivers = ['river@quseit.com']  
+receivers = ['','']  
 
 
 
