@@ -48,6 +48,82 @@ receivers = ['','']
 
 
 
+
+#显示已有的参数
+def showParameter():
+    print "targetName                 :%s"%app_target
+    #print "gitPath                    :%s"%gitPath
+    print "certificateName            :%s"%app_profile
+    print "firToken                   :%s"%fir_api_token
+    print "emailFromUser              :%s"%emailFromUser
+    print "emailToUser                :%s"%mail_user
+    print "emailPassword              :%s"%mail_pass
+    print "emailHost                  :%s"%mail_host
+   #print "keychainPassword(Optional) :%s"%keychainPassword
+    
+#设置参数
+def setParameter():
+    global targetName
+    global tempFinder
+    global mainPath
+    global gitPath
+    global certificateName
+    global firToken
+    global emailFromUser
+    global emailToUser
+    global emailPassword
+    global emailHost
+    global keychainPassword
+    targetName = raw_input("input targetName:")
+    if not isNone(targetName):
+        m = hashlib.md5()
+        m.update('BossZP')
+        tempFinder = m.hexdigest()
+        mainPath = commendPath + 'Documents' + '/' + tempFinder
+    gitPath = raw_input("input gitPath:")
+    certificateName = raw_input("input certificateName:")
+    firToken = raw_input("input firToken:")
+    emailFromUser = raw_input("input emailFromUser:")
+    emailToUser = raw_input("input emailToUser:")
+    emailPassword = raw_input("input emailPassword:")
+    emailHost = raw_input("input emailHost:")
+    #keychainPassword = raw_input("input keychainPassword:")
+    #保存到本地
+    writeJsonFile()
+
+#判断字符串是否为空
+def isNone(para):
+    if para == None or len(para) == 0:
+        return True
+    else:
+        return False
+
+#写json文件
+def writeJsonFile():
+    showParameter()
+    try:
+        fout = open(commendFilePath,'w')
+        js = {}
+        js["targetName"] = targetName
+        js["gitPath"] = gitPath
+        js["certificateName"] = certificateName
+        js["firToken"] = firToken
+        js["emailFromUser"] = emailFromUser
+        js["emailToUser"] = emailToUser
+        js["emailPassword"] = emailPassword
+        js["emailHost"] = emailHost
+        js["tempFinder"] = tempFinder
+        js["mainPath"] = mainPath
+        js["keychainPassword"] = keychainPassword
+        outStr = json.dumps(js,ensure_ascii = False)
+        fout.write(outStr.strip().encode('utf-8') + '\n')
+        fout.close()
+    except Exception,e:
+        print Exception
+        print e
+
+
+
 # 清理项目 创建build目录
 def clean_project_mkdir_build():
     os.system('cd %s;xcodebuild clean' % project_path) # clean 项目
